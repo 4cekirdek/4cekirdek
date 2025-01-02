@@ -1,0 +1,50 @@
+@use "../variables/grid-system" as *;
+@use "../functions/mixins" as *;
+
+@layer layout {
+  /* Container */
+  .container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+    @each $breakpoint, $value in $breakpoints {
+      @include mediaMin($breakpoint) {
+        max-width: $value;
+      }
+    }
+  }
+
+  /* Row */
+  .row {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* Columns */
+  @for $i from 1 through $colSize {
+    .col-#{$i} {
+      flex: 0 0 calc(100% * $i / $colSize);
+      max-width: calc(100% * $i / $colSize);
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+
+  /* Responsive Columns */
+  @each $breakpoint, $value in $breakpoints {
+    @include mediaMin($breakpoint) {
+      @for $i from 1 through $colSize {
+        .#{$breakpoint}\:col-#{$i} {
+          flex: 0 0 calc(100% * $i / $colSize);
+          max-width: calc(100% * $i / $colSize);
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+    }
+  }
+}

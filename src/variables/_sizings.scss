@@ -1,0 +1,63 @@
+$spacer: 0.125rem !default;
+
+$spacer-widths: (
+  0: 0,
+  1: $spacer * 1,
+  2: $spacer * 2,
+  3: $spacer * 3,
+  4: $spacer * 4,
+  5: $spacer * 5,
+  6: $spacer * 6,
+  7: $spacer * 7,
+  8: $spacer * 8,
+  9: $spacer * 9,
+  10: $spacer * 10,
+  11: $spacer * 11,
+  12: $spacer * 12,
+  14: $spacer * 14,
+  16: $spacer * 16,
+  20: $spacer * 20,
+  24: $spacer * 24,
+  28: $spacer * 28,
+  32: $spacer * 32,
+  36: $spacer * 36,
+  40: $spacer * 40,
+  44: $spacer * 44,
+  48: $spacer * 48,
+  52: $spacer * 52,
+  56: $spacer * 56,
+  60: $spacer * 60,
+  64: $spacer * 64,
+  72: $spacer * 72,
+  80: $spacer * 80,
+  96: $spacer * 96,
+) !default;
+
+$spacers: (
+  "none": none,
+  "sm": $spacer * 1,
+  "": $spacer * 2,
+  "md": $spacer * 3,
+  "lg": $spacer * 4,
+  "xl": $spacer * 5,
+  "x2": $spacer * 6,
+  "x3": $spacer * 7,
+) !default;
+
+$ratios: (
+  "1\\/10": 10%,
+  "2\\/10": 20%,
+  "3\\/10": 30%,
+  "4\\/10": 40%,
+  "5\\/10": 50%,
+  "6\\/10": 60%,
+  "7\\/10": 70%,
+  "8\\/10": 80%,
+  "9\\/10": 90%,
+
+  "1\\/4": 25%,
+  "2\\/4": 50%,
+  "3\\/4": 75%,
+  "full": 100%,
+  "auto": auto,
+) !default;

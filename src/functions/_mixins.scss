@@ -1,0 +1,22 @@
+@use "sass:map";
+@use "../variables/grid-system" as grid-system;
+
+@mixin mediaMin($breakpoint) {
+  @if map.has-key(grid-system.$breakpoints, $breakpoint) {
+    @media screen and (min-width: map.get(grid-system.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` not found in `$breakpoints` map.";
+  }
+}
+
+@mixin mediaMax($breakpoint) {
+  @if map.has-key(grid-system.$breakpoints, $breakpoint) {
+    @media screen and (max-width: map.get(grid-system.$breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint `#{$breakpoint}` not found in `$breakpoints` map.";
+  }
+}

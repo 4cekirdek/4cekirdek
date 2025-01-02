@@ -1,0 +1,134 @@
+@use "../functions/mixins" as mixins;
+
+@layer typography {
+  // Heading
+  .headline-x3,
+  h1 {
+    font-size: 64px;
+    line-height: 76px;
+    @include mixins.mediaMax(md) {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+
+  .headline-x2,
+  h2 {
+    font-size: 36px;
+    line-height: 44px;
+    @include mixins.mediaMax(md) {
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+
+  .headline-xl,
+  h3 {
+    font-size: 28px;
+    line-height: 36px;
+    @include mixins.mediaMax(md) {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  .headline-lg,
+  h4 {
+    font-size: 20px;
+    line-height: 28px;
+    @include mixins.mediaMax(md) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+
+  .headline-md,
+  h5 {
+    font-size: 16px;
+    line-height: 24px;
+    @include mixins.mediaMax(md) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  .headline-sm,
+  h6 {
+    font-size: 14px;
+    line-height: 20px;
+    @include mixins.mediaMax(md) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  // Body
+  .body-lg {
+    font-size: 18px;
+    line-height: 28px;
+    @include mixins.mediaMax(md) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  .body-md {
+    font-size: 16px;
+    line-height: 24px;
+    @include mixins.mediaMax(md) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+  .body-sm {
+    font-size: 14px;
+    line-height: 20px;
+    @include mixins.mediaMax(md) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  // Button & Link
+  .link-lg {
+    font-size: 18px;
+    line-height: 24px;
+    @include mixins.mediaMax(md) {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+  .link-md {
+    font-size: 16px;
+    line-height: 20px;
+    @include mixins.mediaMax(md) {
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+  .link-sm {
+    font-size: 14px;
+    line-height: 16px;
+    @include mixins.mediaMax(md) {
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  // Fields
+  .field-md {
+    font-size: 16px;
+    line-height: 24px;
+    @include mixins.mediaMax(md) {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  .field-sm {
+    font-size: 12px;
+    line-height: 16px;
+    @include mixins.mediaMax(md) {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+}
