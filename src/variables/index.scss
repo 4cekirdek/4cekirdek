@@ -1,7 +1,7 @@
-$prefix: bs- !default;
 $delay: 0.2s !default;
 
 @forward "./colors";
+@forward "./border";
 @forward "./grid-system";
 @forward "./opacities";
 @forward "./positions";

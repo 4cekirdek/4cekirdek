@@ -34,14 +34,14 @@ $spacer-widths: (
 ) !default;
 
 $spacers: (
-  "none": none,
+  "0": 0px,
+  "": 1px,
   "sm": $spacer * 1,
-  "": $spacer * 2,
-  "md": $spacer * 3,
-  "lg": $spacer * 4,
-  "xl": $spacer * 5,
-  "x2": $spacer * 6,
-  "x3": $spacer * 7,
+  "md": $spacer * 2,
+  "lg": $spacer * 3,
+  "xl": $spacer * 4,
+  "x2": $spacer * 5,
+  "x3": $spacer * 6,
 ) !default;
 
 $ratios: (

@@ -1,0 +1,48 @@
+@use "sass:map";
+@use "../variables/grid-system" as *;
+@use "../functions/mixins" as *;
+
+@function create-class-name($prefix, $spacer) {
+  @return if(
+    $prefix != "" and $spacer != "",
+    "#{$prefix}-#{$spacer}",
+    if($prefix != "", "#{$prefix}", if($spacer != "", "#{$spacer}", ""))
+  );
+}
+
+@function generate-spacing($properties, $spacer-value) {
+  $result: ();
+  @each $property in $properties {
+    $result: map.merge(
+      $result,
+      (
+        $property: $spacer-value,
+      )
+    );
+  }
+  @return $result;
+}
+
+@mixin generate-classes($properties, $prefix, $spacer-map) {
+  @each $spacer, $spacer-value in $spacer-map {
+    .#{create-class-name($prefix, $spacer)} {
+      @each $property, $value in generate-spacing($properties, $spacer-value) {
+        #{$property}: #{$value};
+      }
+    }
+  }
+
+  @each $breakpoint, $breakpoint-value in $breakpoints {
+    @include mediaMin($breakpoint) {
+      @each $spacer, $spacer-value in $spacer-map {
+        .#{$breakpoint}\:#{create-class-name($prefix, $spacer)} {
+          @each $property,
+            $value in generate-spacing($properties, $spacer-value)
+          {
+            #{$property}: #{$value};
+          }
+        }
+      }
+    }
+  }
+}

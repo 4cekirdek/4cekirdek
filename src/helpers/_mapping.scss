@@ -1,9 +1,0 @@
-@use "sass:map";
-
-@function merge-maps($maps...) {
-  $merged-map: ();
-  @each $map in $maps {
-    $merged-map: map.merge($merged-map, $map);
-  }
-  @return $merged-map;
-}
