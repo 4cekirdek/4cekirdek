@@ -19,4 +19,22 @@
 
   @include generate-classes(left, "left", $ratios);
   @include generate-classes(left, left, $spacer-widths);
+
+  /* Width */
+  @include generate-classes(width, "w", $ratios);
+  @include generate-classes(width, "w", $spacer-widths);
+  @include generate-classes(min-width, "min-w", $ratios);
+  @include generate-classes(min-width, "min-w", $spacer-widths);
+  @include generate-classes(max-width, "max-w", $ratios);
+  @include generate-classes(max-width, "max-w", $spacer-widths);
+
+  /* Height */
+  @include generate-classes(height, "h", $ratios);
+  @include generate-classes(height, "h", $spacer-widths);
+  @include generate-classes(min-height, "min-h", $ratios);
+  @include generate-classes(min-height, "min-h", $spacer-widths);
+  @include generate-classes(max-height, "max-h", $ratios);
+  @include generate-classes(max-height, "max-h", $spacer-widths);
+
+  // Size değeri verilecek w h olarak ayrıca burda 2 li stil verileceği için bir yerde stili left right olarak vermiştik bu hatalı build alınıyor olabilir.
 }

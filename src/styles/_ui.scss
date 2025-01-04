@@ -5,6 +5,24 @@
   /* Display */
   @include generate-classes(display, "", $displays);
 
+  /* Justify Content */
+  @include generate-classes(justify-content, "justify", $contents);
+
+  /* Justify Items */
+  @include generate-classes(justify-items, "justify-items", $items);
+
+  /* Justify Self */
+  @include generate-classes(justify-self, "justify-self", $selfs);
+
+  /* Align Items */
+  @include generate-classes(align-items, "items", $items);
+
+  /* Align Content */
+  @include generate-classes(align-content, "content", $contents);
+
+  /* Align Self */
+  @include generate-classes(align-self, "self", $selfs);
+
   /* Aspect Ratio */
   @include generate-classes(aspect-ratio, "aspect", $aspect-ratios);
 
@@ -57,4 +75,20 @@
 
   /* Flex Wraps */
   @include generate-classes(flex-wrap, "flex", $flex-wraps);
+
+  /* Grid Col & Row */
+  @include generate-classes(grid-template-columns, "grid-col", $grid-cols-rows);
+  @include generate-classes(grid-template-rows, "grid-row", $grid-cols-rows);
+
+  /* Grid Col & Row Span */
+  @include generate-classes(grid-column, "col-span", $grid-spans);
+  @include generate-classes(grid-row, "row-span", $grid-spans);
+
+  /* Grid Col & Row Start */
+  @include generate-classes(grid-column-start, "col-start", $grid-starts-ends);
+  @include generate-classes(grid-row-start, "row-start", $grid-starts-ends);
+
+  /* Grid Col & Row End */
+  @include generate-classes(grid-column-end, "col-end", $grid-starts-ends);
+  @include generate-classes(grid-row-end, "row-end", $grid-starts-ends);
 }
