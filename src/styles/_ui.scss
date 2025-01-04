@@ -1,15 +1,9 @@
 @use "../variables/ui" as *;
-@use "../variables/sizings" as *;
 @use "../helpers/generete-classes" as *;
 
 @layer ui {
   /* Display */
   @include generate-classes(display, "", $displays);
-
-  /* Gap */
-  @include generate-classes(gap, "gap", $spacers);
-  @include generate-classes(column-gap, "column-gap", $spacers);
-  @include generate-classes(row-gap, "row-gap", $spacers);
 
   /* Aspect Ratio */
   @include generate-classes(aspect-ratio, "aspect", $aspect-ratios);
@@ -51,19 +45,6 @@
 
   /* Position */
   @include generate-classes(position, "", $positions);
-
-  /* Top & Bottom & Right & Left */
-  @include generate-classes(top, "top", $ratios);
-  @include generate-classes(top, top, $spacer-widths);
-
-  @include generate-classes(bottom, "bottom", $ratios);
-  @include generate-classes(bottom, bottom, $spacer-widths);
-
-  @include generate-classes(right, "right", $ratios);
-  @include generate-classes(right, right, $spacer-widths);
-
-  @include generate-classes(left, "left", $ratios);
-  @include generate-classes(left, left, $spacer-widths);
 
   /* Visibilities */
   @include generate-classes(visibility, "visibility", $visibilities);
