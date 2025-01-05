@@ -1,0 +1,233 @@
+@use "sass:map";
+@use "sizings" as *;
+
+$typographies: (
+  // Heading
+  "headline-3x":
+    (
+      font-size: 64px,
+      line-height: 76px,
+      "md": (
+        font-size: 28px,
+        line-height: 36px,
+      ),
+    ),
+  "headline-2x": (
+    font-size: 36px,
+    line-height: 44px,
+    "md": (
+      font-size: 20px,
+      line-height: 28px,
+    ),
+  ),
+  "headline-xl": (
+    font-size: 28px,
+    line-height: 36px,
+    "md": (
+      font-size: 18px,
+      line-height: 24px,
+    ),
+  ),
+  "headline-lg": (
+    font-size: 20px,
+    line-height: 28px,
+    "md": (
+      font-size: 16px,
+      line-height: 20px,
+    ),
+  ),
+  "headline-md": (
+    font-size: 16px,
+    line-height: 24px,
+    "md": (
+      font-size: 14px,
+      line-height: 20px,
+    ),
+  ),
+  "headline-sm": (
+    font-size: 14px,
+    line-height: 20px,
+    "md": (
+      font-size: 12px,
+      line-height: 16px,
+    ),
+  ),
+
+  // Body
+  "body-lg":
+    (
+      font-size: 18px,
+      line-height: 28px,
+      overflow-wrap: break-word,
+      hyphens: auto,
+      "md": (
+        font-size: 16px,
+        line-height: 24px,
+      ),
+    ),
+  "body-md": (
+    font-size: 16px,
+    line-height: 24px,
+    overflow-wrap: break-word,
+    hyphens: auto,
+    "md": (
+      font-size: 14px,
+      line-height: 20px,
+    ),
+  ),
+  "body-sm": (
+    font-size: 14px,
+    line-height: 20px,
+    overflow-wrap: break-word,
+    hyphens: auto,
+    "md": (
+      font-size: 12px,
+      line-height: 16px,
+    ),
+  ),
+
+  // Button & Link
+  "link-lg":
+    (
+      font-size: 18px,
+      line-height: 24px,
+      "md": (
+        font-size: 18px,
+        line-height: 24px,
+      ),
+    ),
+  "link-md": (
+    font-size: 16px,
+    line-height: 20px,
+    "md": (
+      font-size: 16px,
+      line-height: 20px,
+    ),
+  ),
+  "link-sm": (
+    font-size: 14px,
+    line-height: 16px,
+    "md": (
+      font-size: 14px,
+      line-height: 16px,
+    ),
+  ),
+
+  // Fields
+  "field-md":
+    (
+      font-size: 16px,
+      line-height: 24px,
+      white-space: nowrap,
+      "md": (
+        font-size: 16px,
+        line-height: 24px,
+      ),
+    ),
+  "field-sm": (
+    font-size: 12px,
+    line-height: 16px,
+    white-space: nowrap,
+    "md": (
+      font-size: 12px,
+      line-height: 16px,
+    ),
+  )
+) !default;
+
+$font-styles: (
+  "italic": italic,
+  "no-italic": normal,
+) !default;
+
+$font-weights: (
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "bold": 700,
+  "black": 900,
+) !default;
+
+$text-aligns: (
+  "left": left,
+  "center": center,
+  "right": right,
+  "justify": justify,
+) !default;
+
+$text-transforms: (
+  "uppercase": uppercase,
+  "lowercase": lowercase,
+  "capitalize": capitalize,
+  "normal-case": none,
+) !default;
+
+$text-wraps: (wrap, nowrap, balance, pretty) !default;
+
+$text-decorations: (
+  "underline": underline,
+  "line-through": line-through,
+  "none": none,
+) !default;
+
+$text-decoration-styles: (solid, double, dotted, dashed, wavy) !default;
+
+$text-decoration-size: map.merge(
+  (
+    auto: "auto",
+    "from-font": from-font,
+  ),
+  $spacers
+) !default;
+
+$text-decoration-offset: map.merge(
+  (
+    auto: "auto",
+  ),
+  $spacers
+) !default;
+
+$line-clamps: (
+  "1": (
+    "overflow": hidden,
+    "display": "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 1,
+  ),
+  "2": (
+    "overflow": hidden,
+    "display": "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 2,
+  ),
+  "3": (
+    "overflow": hidden,
+    "display": "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 3,
+  ),
+  "4": (
+    "overflow": hidden,
+    "display": "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 4,
+  ),
+  "5": (
+    "overflow": hidden,
+    "display": "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 5,
+  ),
+  "6": (
+    "overflow": hidden,
+    "display": "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": 6,
+  ),
+  "none": (
+    "overflow": visible,
+    "display": block,
+    "-webkit-box-orient": horizontal,
+    "-webkit-line-clamp": none,
+  ),
+);

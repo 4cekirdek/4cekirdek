@@ -2,6 +2,7 @@ $spacer: 0.125rem !default;
 
 $spacer-widths: (
   0: 0,
+  px: 1px,
   1: $spacer * 1,
   2: $spacer * 2,
   3: $spacer * 3,
@@ -35,7 +36,7 @@ $spacer-widths: (
 
 $spacers: (
   "0": 0px,
-  "": 1px,
+  "1": 1px,
   "sm": $spacer * 1,
   "md": $spacer * 2,
   "lg": $spacer * 3,

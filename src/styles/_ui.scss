@@ -2,6 +2,12 @@
 @use "../helpers/generete-classes" as *;
 
 @layer ui {
+  /* Opacity */
+  @include generate-classes(opacity, "opacity", $opacities);
+
+  /* Shadow */
+  @include generate-classes(box-shadow, "shadow", $shadows);
+
   /* Display */
   @include generate-classes(display, "", $displays);
 

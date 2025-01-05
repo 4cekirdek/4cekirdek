@@ -1,134 +1,61 @@
 @use "../functions/mixins" as mixins;
+@use "../variables/typography" as *;
+@use "../variables/colors" as *;
+@use "../variables/sizings" as *;
+@use "../helpers/generete-classes" as *;
 
 @layer typography {
-  // Heading
-  .headline-x3,
-  h1 {
-    font-size: 64px;
-    line-height: 76px;
-    @include mixins.mediaMax(md) {
-      font-size: 28px;
-      line-height: 36px;
-    }
-  }
+  /* Typographies */
+  @include generate-responsive-styles($typographies);
 
-  .headline-x2,
-  h2 {
-    font-size: 36px;
-    line-height: 44px;
-    @include mixins.mediaMax(md) {
-      font-size: 20px;
-      line-height: 28px;
-    }
-  }
+  /* Font Style */
+  @include generate-classes(font-style, "", $font-styles);
 
-  .headline-xl,
-  h3 {
-    font-size: 28px;
-    line-height: 36px;
-    @include mixins.mediaMax(md) {
-      font-size: 18px;
-      line-height: 24px;
-    }
-  }
+  /* Font Weight */
+  @include generate-classes(font-weight, "", $font-weights);
 
-  .headline-lg,
-  h4 {
-    font-size: 20px;
-    line-height: 28px;
-    @include mixins.mediaMax(md) {
-      font-size: 16px;
-      line-height: 20px;
-    }
-  }
+  /* Text Color */
+  @include generate-classes(color, "text", $colors);
 
-  .headline-md,
-  h5 {
-    font-size: 16px;
-    line-height: 24px;
-    @include mixins.mediaMax(md) {
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
+  /* Text Align */
+  @include generate-classes(text-align, "text", $text-aligns);
 
-  .headline-sm,
-  h6 {
-    font-size: 14px;
-    line-height: 20px;
-    @include mixins.mediaMax(md) {
-      font-size: 12px;
-      line-height: 16px;
-    }
-  }
+  /* Text Transform */
+  @include generate-classes(text-transform, "", $text-transforms);
 
-  // Body
-  .body-lg {
-    font-size: 18px;
-    line-height: 28px;
-    @include mixins.mediaMax(md) {
-      font-size: 16px;
-      line-height: 24px;
-    }
-  }
-  .body-md {
-    font-size: 16px;
-    line-height: 24px;
-    @include mixins.mediaMax(md) {
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
-  .body-sm {
-    font-size: 14px;
-    line-height: 20px;
-    @include mixins.mediaMax(md) {
-      font-size: 12px;
-      line-height: 16px;
-    }
-  }
+  /* Text Wrap */
+  @include generate-classes(white-space, "text-wrap", $text-wraps);
 
-  // Button & Link
-  .link-lg {
-    font-size: 18px;
-    line-height: 24px;
-    @include mixins.mediaMax(md) {
-      font-size: 18px;
-      line-height: 24px;
-    }
-  }
-  .link-md {
-    font-size: 16px;
-    line-height: 20px;
-    @include mixins.mediaMax(md) {
-      font-size: 16px;
-      line-height: 20px;
-    }
-  }
-  .link-sm {
-    font-size: 14px;
-    line-height: 16px;
-    @include mixins.mediaMax(md) {
-      font-size: 14px;
-      line-height: 16px;
-    }
-  }
+  /* Text Indent */
+  @include generate-classes(text-indent, "indent", $sizings);
 
-  // Fields
-  .field-md {
-    font-size: 16px;
-    line-height: 24px;
-    @include mixins.mediaMax(md) {
-      font-size: 16px;
-      line-height: 24px;
-    }
-  }
-  .field-sm {
-    font-size: 12px;
-    line-height: 16px;
-    @include mixins.mediaMax(md) {
-      font-size: 12px;
-      line-height: 16px;
-    }
-  }
+  /* Decoration */
+  @include generate-classes(text-decoration, "", $text-decorations);
+
+  /* Decoration Color */
+  @include generate-classes(text-decoration-color, "decoration", $colors);
+
+  /* Decoration Style */
+  @include generate-classes(
+    text-decoration-style,
+    "decoration",
+    $text-decoration-styles
+  );
+
+  /* Decoration Thickness */
+  @include generate-classes(
+    text-decoration-thickness,
+    "decoration",
+    $text-decoration-size
+  );
+
+  /* Decoration Skip */
+  @include generate-classes(
+    text-underline-offset,
+    "decoration-offset",
+    $text-decoration-offset
+  );
+
+  /* Line Clamps */
+  @include generate-classes((), "line-clamp", $line-clamps);
 }

@@ -1,45 +1,159 @@
-@use "sass:map";
-@use "../variables/grid-system" as *;
-@use "../functions/mixins" as *;
+@use "sass:map"; // SCSS'in map (harita) fonksiyonlarını kullanmak için.
+@use "sass:meta"; // SCSS meta verileri işlemek için.
+@use "../variables/grid-system" as *; // Grid sistem değişkenlerini import eder.
+@use "../functions/mixins" as *; // Mixins fonksiyonlarını import eder.
 
+/**
+ * `create-class-name`
+ * 
+ * Prefix ve spacer değerlerini kullanarak CSS sınıf ismi oluşturur.
+ * - Prefix: Sınıfın başındaki anahtar kelime (ör. "m" -> margin).
+ * - Spacer: Sınıfın değeri veya numarası (ör. "4").
+ * 
+ * Örnekler:
+ * - Prefix ve spacer varsa: "m-4"
+ * - Sadece prefix varsa: "m"
+ * - Sadece spacer varsa: "4"
+ */
 @function create-class-name($prefix, $spacer) {
   @return if(
     $prefix != "" and $spacer != "",
     "#{$prefix}-#{$spacer}",
+    // Hem prefix hem spacer varsa.
     if($prefix != "", "#{$prefix}", if($spacer != "", "#{$spacer}", ""))
   );
 }
 
+/**
+ * `generate-spacing`
+ * 
+ * Birden fazla CSS özelliği için verilen spacer değerine dayalı bir harita oluşturur.
+ * - $properties: CSS özellikleri listesi (ör. margin, padding).
+ * - $spacer-value: Özelliklere atanacak değer.
+ * 
+ * Örnek:
+ * - $properties: (margin, padding)
+ * - $spacer-value: 4px
+ * 
+ * Dönüş:
+ * - (margin: 4px, padding: 4px)
+ */
 @function generate-spacing($properties, $spacer-value) {
-  $result: ();
+  $result: (); // Sonuç olarak dönecek harita.
   @each $property in $properties {
     $result: map.merge(
       $result,
       (
         $property: $spacer-value,
+        // Her özellik için spacer değeri eklenir.
       )
     );
   }
-  @return $result;
+  @return $result; // Sonuç haritası döndürülür.
 }
 
-@mixin generate-classes($properties, $prefix, $spacer-map) {
+/**
+ * `generate-classes`
+ * 
+ * CSS sınıflarını dinamik olarak oluşturur. Breakpoint bazlı ve filtreleme özellikleri vardır.
+ * - $properties: CSS özellikleri listesi (ör. margin, padding).
+ * - $prefix: Sınıf ismi için kullanılacak prefix (ör. "m", "p").
+ * - $spacer-map: Özellik değerlerini tanımlayan harita (ör. {"1": 4px, "2": 8px}).
+ * - $filter-breakpoints: (Opsiyonel) Sadece belirli breakpoints için sınıf oluşturur.
+ */
+@mixin generate-classes(
+  $properties,
+  // Kullanılacak CSS özellikleri.
+  $prefix,
+  // Sınıf için prefix.
+  $spacer-map,
+  // Spacer değerleri ve isimlerini içeren harita.
+  $filter-breakpoints: null // Hangi breakpoints'in dahil edileceğini filtreler.
+) {
+  // 1. Varsayılan sınıfları oluştur.
   @each $spacer, $spacer-value in $spacer-map {
     .#{create-class-name($prefix, $spacer)} {
-      @each $property, $value in generate-spacing($properties, $spacer-value) {
-        #{$property}: #{$value};
+      // Sınıf ismi oluşturulur.
+      @if meta.type-of($spacer-value) == "map" {
+        // Değer bir harita ise.
+        @each $property, $value in $spacer-value {
+          #{$property}: #{$value}; // Haritadaki her özellik eklenir.
+        }
+      } @else {
+        @each $property, $value in generate-spacing($properties, $spacer-value)
+        {
+          #{$property}: #{$value}; // Normal değer için.
+        }
       }
     }
   }
 
+  // 2. Breakpoints'e özel sınıfları oluştur.
   @each $breakpoint, $breakpoint-value in $breakpoints {
-    @include mediaMin($breakpoint) {
-      @each $spacer, $spacer-value in $spacer-map {
-        .#{$breakpoint}\:#{create-class-name($prefix, $spacer)} {
-          @each $property,
-            $value in generate-spacing($properties, $spacer-value)
-          {
-            #{$property}: #{$value};
+    @if $filter-breakpoints == null or index($filter-breakpoints, $breakpoint) {
+      // Eğer filtre verilmişse sadece belirtilen breakpoints'i oluştur.
+      @include mediaMin($breakpoint) {
+        // Breakpoint için medya sorgusu.
+        @each $spacer, $spacer-value in $spacer-map {
+          .#{$breakpoint}\:#{create-class-name($prefix, $spacer)} {
+            @if meta.type-of($spacer-value) == "map" {
+              @each $property, $value in $spacer-value {
+                #{$property}: #{$value}; // Haritadaki özellikler eklenir.
+              }
+            } @else {
+              @each $property,
+                $value in generate-spacing($properties, $spacer-value)
+              {
+                #{$property}: #{$value}; // Normal değer için.
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * `generate-responsive-styles`
+ *
+ * Dinamik olarak bir sınıf ve ilgili breakpoints için medya sorguları oluşturur.
+ * - $styles-map: Sınıf ve stilleri tanımlayan harita.
+ *
+ * Örnek:
+ * $styles-map: (
+ *   "headline-x3": (
+ *     font-size: 64px,
+ *     line-height: 76px,
+ *     "md": (
+ *       font-size: 28px,
+ *       line-height: 36px,
+ *     ),
+ *   ),
+ * );
+ */
+@mixin generate-responsive-styles($styles-map) {
+  @each $class-name, $styles in $styles-map {
+    // 1. Ana sınıf tanımı
+    .#{$class-name} {
+      @each $property, $value in $styles {
+        @if meta.type-of($value) != "map" {
+          #{$property}: #{$value};
+        }
+      }
+    }
+
+    // 2. Breakpoint'e özel medya sorguları
+    @each $breakpoint, $breakpoint-styles in $styles {
+      @if meta.type-of($breakpoint-styles) ==
+        "map" and
+        map.has-key($breakpoints, $breakpoint)
+      {
+        @include mediaMin($breakpoint) {
+          .#{$class-name} {
+            @each $property, $value in $breakpoint-styles {
+              #{$property}: #{$value};
+            }
           }
         }
       }
