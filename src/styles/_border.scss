@@ -35,7 +35,7 @@
   @include generate-classes(outline-color, "outline", $colors);
 
   /* Outline Style */
-  @include generate-classes(outline-styles, "outline", $outline-styles);
+  @include generate-classes(outline-style, "outline", $outline-styles);
 
   /* Outline Width */
   @include generate-classes(outline-width, "outline", $spacers);

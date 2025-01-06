@@ -1,0 +1,77 @@
+@use "../variables/effect" as *;
+@use "../variables/colors" as *;
+@use "../helpers/generete-classes" as *;
+
+@layer effect {
+  /* Blur */
+  @include generate-classes(filter, "blur", $blurs);
+
+  /* Brightness */
+  @include generate-classes(filter, "brightness", $brightness);
+
+  /* Contrast */
+  @include generate-classes(filter, "contrast", $contrasts);
+
+  /* Drop Shadow */
+  @include generate-classes(filter, "drop-shadow", $drop-shadows);
+
+  /* Grayscale */
+  @include generate-classes(filter, "grayscale", $grayscales);
+
+  /* Hue Rotate */
+  @include generate-classes(filter, "hue-rotate", $hue-rotates);
+
+  /* Invert */
+  @include generate-classes(filter, "invert", $inverts);
+
+  /* Saturate */
+  @include generate-classes(filter, "saturate", $saturates);
+
+  /* Sepia */
+  @include generate-classes(filter, "sepia", $sepias);
+
+  /* Backdrop Blur */
+  @include generate-classes(backdrop-filter, "backdrop-blur", $backdrop-blurs);
+
+  /* Backdrop Brightness */
+  @include generate-classes(
+    backdrop-filter,
+    "backdrop-brightness",
+    $backdrop-brightness
+  );
+
+  /* Backdrop Contrast */
+  @include generate-classes(
+    backdrop-filter,
+    "backdrop-contrast",
+    $backdrop-contrasts
+  );
+
+  /* Backdrop Grayscale */
+  @include generate-classes(
+    backdrop-filter,
+    "backdrop-grayscale",
+    $backdrop-grayscales
+  );
+
+  /* Backdrop Hue Rotate */
+  @include generate-classes(
+    backdrop-filter,
+    "backdrop-hue-rotate",
+    $backdrop-hue-rotates
+  );
+
+  /* Backdrop Invert */
+  @include generate-classes(
+    backdrop-filter,
+    "backdrop-invert",
+    $backdrop-inverts
+  );
+
+  /* Backdrop Opacity */
+  @include generate-classes(
+    backdrop-filter,
+    "backdrop-opacity",
+    $backdrop-opacities
+  );
+}

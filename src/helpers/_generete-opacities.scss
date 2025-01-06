@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "../variables/ui" as *;
+
+@function generete-opacities($property) {
+  $result: ();
+
+  @each $opacity-name, $opacity-value in $opacities {
+    $result: map.merge(
+      $result,
+      (
+        $opacity-name: $property($opacity-value),
+      )
+    );
+  }
+
+  @return $result;
+}
