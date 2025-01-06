@@ -46,14 +46,10 @@
   @include generate-classes(clear, "clear", $floats);
 
   /* Object Fit */
-  @include generate-classes(object-fit, "object-fit", $object-fits);
+  @include generate-classes(object-fit, "object", $object-fits);
 
   /* Object Position */
-  @include generate-classes(
-    object-position,
-    "object-position",
-    $object-positions
-  );
+  @include generate-classes(object-position, "object", $object-positions);
 
   /* Overflow */
   @include generate-classes(overflow, "overflow", $overflows);

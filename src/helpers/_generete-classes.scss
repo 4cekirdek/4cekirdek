@@ -80,8 +80,8 @@
           #{$property}: #{$value}; // Haritadaki her özellik eklenir.
         }
       } @else {
-        @each $property, $value in generate-spacing($properties, $spacer-value)
-        {
+        $value: if($spacer-value, $spacer-value, $spacer);
+        @each $property, $value in generate-spacing($properties, $value) {
           #{$property}: #{$value}; // Normal değer için.
         }
       }
@@ -101,9 +101,8 @@
                 #{$property}: #{$value}; // Haritadaki özellikler eklenir.
               }
             } @else {
-              @each $property,
-                $value in generate-spacing($properties, $spacer-value)
-              {
+              $value: if($spacer-value, $spacer-value, $spacer);
+              @each $property, $value in generate-spacing($properties, $value) {
                 #{$property}: #{$value}; // Normal değer için.
               }
             }
