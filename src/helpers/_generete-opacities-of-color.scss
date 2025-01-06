@@ -1,0 +1,38 @@
+@use "sass:map";
+/**
+ * `generete-opacities-of-color`
+ *
+ * Verilen bir renk için opacity varyasyonlarını oluşturur.
+ *
+ * @param $color: Ana renk
+ * @param $name: Renk için temel anahtar ismi (ör: "blue")
+ * @return Map: Ana renk ve opacity varyasyonlarını içeren bir harita
+ *
+ * Örnek:
+ * Input: generete-opacities-of-color(#0d6efd, "blue")
+ * Output: (
+ *   "blue": #0d6efd,
+ *   "blue-100": rgba(13, 110, 253, 0.1),
+ *   "blue-200": rgba(13, 110, 253, 0.2),
+ *   ...
+ *   "blue-900": rgba(13, 110, 253, 0.9),
+ * )
+ */
+@function generete-opacities-of-color($color, $name) {
+  $result: (
+    $name: $color,
+  );
+
+  @for $i from 1 through 9 {
+    $opacity: $i * 0.1;
+    $key: "#{$name}-#{$i}00";
+    $result: map.merge(
+      $result,
+      (
+        $key: rgba($color, $opacity),
+      )
+    );
+  }
+
+  @return $result;
+}

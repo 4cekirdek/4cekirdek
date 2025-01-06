@@ -27,7 +27,7 @@
   @include generate-classes(white-space, "text-wrap", $text-wraps);
 
   /* Text Indent */
-  @include generate-classes(text-indent, "indent", $sizings);
+  @include generate-classes(text-indent, "indent", $spacer-widths);
 
   /* Decoration */
   @include generate-classes(text-decoration, "", $text-decorations);

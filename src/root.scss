@@ -1,0 +1,9 @@
+@use "sass:meta";
+@use "variables/colors" as *;
+@use "variables/default" as *;
+
+:root {
+  @each $color-name, $color-value in $colors {
+    #{$prefix}-#{$color-name}: #{$color-value};
+  }
+}

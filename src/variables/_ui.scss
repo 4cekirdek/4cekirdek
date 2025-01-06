@@ -1,36 +1,69 @@
+@use "sass:map";
+@use "default" as *;
+@use "colors" as *;
+
+$delay: 0.2s !default;
+
 $opacities: (
-  "0": 0,
-  "5": 0.05,
-  "10": 0.1,
-  "15": 0.15,
-  "20": 0.2,
-  "25": 0.25,
-  "30": 0.3,
-  "35": 0.35,
-  "40": 0.4,
-  "45": 0.45,
-  "50": 0.5,
-  "55": 0.55,
-  "60": 0.6,
-  "65": 0.65,
-  "70": 0.7,
-  "75": 0.75,
-  "80": 0.8,
-  "85": 0.85,
-  "90": 0.9,
-  "95": 0.95,
-  "100": 1,
+  0: 0,
+  5: 0.05,
+  10: 0.1,
+  15: 0.15,
+  20: 0.2,
+  25: 0.25,
+  30: 0.3,
+  35: 0.35,
+  40: 0.4,
+  45: 0.45,
+  50: 0.5,
+  55: 0.55,
+  60: 0.6,
+  65: 0.65,
+  70: 0.7,
+  75: 0.75,
+  80: 0.8,
+  85: 0.85,
+  90: 0.9,
+  95: 0.95,
+  100: 1,
 );
 
+$shadow-color-name: "#{$prefix}-shadow-color";
 $shadows: (
-  "sm": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
-  "": "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)",
-  "md": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
-  "lg": "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
-  "xl": "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
-  "x2": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-  "inner": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
-  "none": "0 0 #0000",
+  sm: (
+    $shadow-color-name: rgb(0 0 0 / 0.05),
+    box-shadow: "0 1px 2px 0 var(#{$shadow-color-name}, rgb(0 0 0 / 0.05))",
+  ),
+  "": (
+    $shadow-color-name: rgb(0 0 0 / 0.1),
+    box-shadow:
+      "0 1px 3px 0 var(#{$shadow-color-name}, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(#{$shadow-color-name}, rgb(0 0 0 / 0.1))",
+  ),
+  md: (
+    $shadow-color-name: rgb(0 0 0 / 0.1),
+    box-shadow:
+      "0 4px 6px -1px var(#{$shadow-color-name}, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(#{$shadow-color-name}, rgb(0 0 0 / 0.1))",
+  ),
+  lg: (
+    $shadow-color-name: rgb(0 0 0 / 0.1),
+    box-shadow:
+      "0 10px 15px -3px var(#{$shadow-color-name}, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(#{$shadow-color-name}, rgb(0 0 0 / 0.1))",
+  ),
+  xl: (
+    $shadow-color-name: rgb(0 0 0 / 0.1),
+    box-shadow:
+      "0 20px 25px -5px var(#{$shadow-color-name}, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(#{$shadow-color-name}, rgb(0 0 0 / 0.1))",
+  ),
+  x2: (
+    $shadow-color-name: rgb(0 0 0 / 0.25),
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25),
+  ),
+  inner: (
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.25),
+  ),
+  none: (
+    box-shadow: 0 0 #0000,
+  ),
 ) !default;
 
 $displays: (
@@ -195,3 +228,26 @@ $grid-spans: (
 ) !default;
 
 $grid-starts-ends: (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, auto) !default;
+
+$background-colors: map.merge(
+  (
+    "inherit": inherit,
+    "currentColor": currentColor,
+    "transparent": transparent,
+  ),
+  $colors
+);
+
+$background-positions: (
+  "bottom": bottom,
+  "center": center,
+  "left": left,
+  "left-bottom": left bottom,
+  "left-top": left top,
+  "right": right,
+  "right-bottom": right bottom,
+  "right-top": right top,
+  "top": top,
+);
+
+$background-sizes: (auto, cover, contain);
