@@ -1,0 +1,25 @@
+@use "default" as *;
+@use "sizings" as *;
+
+$border-spacing-name: "#{$prefix}-border-spacing";
+
+$border-spacing-name-x: "#{$border-spacing-name}-x";
+$border-spacing-name-y: "#{$border-spacing-name}-y";
+
+$border-spacing-default-value-x: "var(#{$border-spacing-name-x}, 0.125rem)";
+$border-spacing-default-value-y: "var(#{$border-spacing-name-y}, 0.125rem)";
+
+$border-collapse: (
+  collapse: (
+    border-collapse: collapse,
+  ),
+  separate: (
+    border-collapse: separate,
+    border-spacing: $border-spacing-default-value-x
+      $border-spacing-default-value-y,
+  ),
+) !default;
+
+$table-layouts: (auto, fixed) !default;
+
+$caption-sides: (top, bottom) !default;

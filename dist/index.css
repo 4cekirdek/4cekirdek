@@ -1,0 +1,178 @@
+@charset "UTF-8";
+/* 
+
+MIT License
+
+Copyright (c) 2025 Samet Çetin
+Author: Samet Çetin (github.com/imsamet)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/**
+ * `generete-opacities-of-color`
+ *
+ * Verilen bir renk için opacity varyasyonlarını oluşturur.
+ *
+ * @param $color: Ana renk
+ * @param $name: Renk için temel anahtar ismi (ör: "blue")
+ * @return Map: Ana renk ve opacity varyasyonlarını içeren bir harita
+ *
+ * Örnek:
+ * Input: generete-opacities-of-color(#0d6efd, "blue")
+ * Output: (
+ *   "blue": #0d6efd,
+ *   "blue-100": rgba(13, 110, 253, 0.1),
+ *   "blue-200": rgba(13, 110, 253, 0.2),
+ *   ...
+ *   "blue-900": rgba(13, 110, 253, 0.9),
+ * )
+ */
+:root {
+  --sm-white: #fff;
+  --sm-gray-100: #f8f9fa;
+  --sm-gray-200: #e9ecef;
+  --sm-gray-300: #dee2e6;
+  --sm-gray-400: #ced4da;
+  --sm-gray-500: #adb5bd;
+  --sm-gray-600: #6c757d;
+  --sm-gray-700: #495057;
+  --sm-gray-800: #343a40;
+  --sm-gray-900: #212529;
+  --sm-black: #000;
+  --sm-blue: #0d6efd;
+  --sm-blue-100: rgba(13, 110, 253, 0.1);
+  --sm-blue-200: rgba(13, 110, 253, 0.2);
+  --sm-blue-300: rgba(13, 110, 253, 0.3);
+  --sm-blue-400: rgba(13, 110, 253, 0.4);
+  --sm-blue-500: rgba(13, 110, 253, 0.5);
+  --sm-blue-600: rgba(13, 110, 253, 0.6);
+  --sm-blue-700: rgba(13, 110, 253, 0.7);
+  --sm-blue-800: rgba(13, 110, 253, 0.8);
+  --sm-blue-900: rgba(13, 110, 253, 0.9);
+  --sm-indigo: #6610f2;
+  --sm-indigo-100: rgba(102, 16, 242, 0.1);
+  --sm-indigo-200: rgba(102, 16, 242, 0.2);
+  --sm-indigo-300: rgba(102, 16, 242, 0.3);
+  --sm-indigo-400: rgba(102, 16, 242, 0.4);
+  --sm-indigo-500: rgba(102, 16, 242, 0.5);
+  --sm-indigo-600: rgba(102, 16, 242, 0.6);
+  --sm-indigo-700: rgba(102, 16, 242, 0.7);
+  --sm-indigo-800: rgba(102, 16, 242, 0.8);
+  --sm-indigo-900: rgba(102, 16, 242, 0.9);
+  --sm-purple: #6f42c1;
+  --sm-purple-100: rgba(111, 66, 193, 0.1);
+  --sm-purple-200: rgba(111, 66, 193, 0.2);
+  --sm-purple-300: rgba(111, 66, 193, 0.3);
+  --sm-purple-400: rgba(111, 66, 193, 0.4);
+  --sm-purple-500: rgba(111, 66, 193, 0.5);
+  --sm-purple-600: rgba(111, 66, 193, 0.6);
+  --sm-purple-700: rgba(111, 66, 193, 0.7);
+  --sm-purple-800: rgba(111, 66, 193, 0.8);
+  --sm-purple-900: rgba(111, 66, 193, 0.9);
+  --sm-pink: #d63384;
+  --sm-pink-100: rgba(214, 51, 132, 0.1);
+  --sm-pink-200: rgba(214, 51, 132, 0.2);
+  --sm-pink-300: rgba(214, 51, 132, 0.3);
+  --sm-pink-400: rgba(214, 51, 132, 0.4);
+  --sm-pink-500: rgba(214, 51, 132, 0.5);
+  --sm-pink-600: rgba(214, 51, 132, 0.6);
+  --sm-pink-700: rgba(214, 51, 132, 0.7);
+  --sm-pink-800: rgba(214, 51, 132, 0.8);
+  --sm-pink-900: rgba(214, 51, 132, 0.9);
+  --sm-red: #dc3545;
+  --sm-red-100: rgba(220, 53, 69, 0.1);
+  --sm-red-200: rgba(220, 53, 69, 0.2);
+  --sm-red-300: rgba(220, 53, 69, 0.3);
+  --sm-red-400: rgba(220, 53, 69, 0.4);
+  --sm-red-500: rgba(220, 53, 69, 0.5);
+  --sm-red-600: rgba(220, 53, 69, 0.6);
+  --sm-red-700: rgba(220, 53, 69, 0.7);
+  --sm-red-800: rgba(220, 53, 69, 0.8);
+  --sm-red-900: rgba(220, 53, 69, 0.9);
+  --sm-orange: #fd7e14;
+  --sm-orange-100: rgba(253, 126, 20, 0.1);
+  --sm-orange-200: rgba(253, 126, 20, 0.2);
+  --sm-orange-300: rgba(253, 126, 20, 0.3);
+  --sm-orange-400: rgba(253, 126, 20, 0.4);
+  --sm-orange-500: rgba(253, 126, 20, 0.5);
+  --sm-orange-600: rgba(253, 126, 20, 0.6);
+  --sm-orange-700: rgba(253, 126, 20, 0.7);
+  --sm-orange-800: rgba(253, 126, 20, 0.8);
+  --sm-orange-900: rgba(253, 126, 20, 0.9);
+  --sm-yellow: #ffc107;
+  --sm-yellow-100: rgba(255, 193, 7, 0.1);
+  --sm-yellow-200: rgba(255, 193, 7, 0.2);
+  --sm-yellow-300: rgba(255, 193, 7, 0.3);
+  --sm-yellow-400: rgba(255, 193, 7, 0.4);
+  --sm-yellow-500: rgba(255, 193, 7, 0.5);
+  --sm-yellow-600: rgba(255, 193, 7, 0.6);
+  --sm-yellow-700: rgba(255, 193, 7, 0.7);
+  --sm-yellow-800: rgba(255, 193, 7, 0.8);
+  --sm-yellow-900: rgba(255, 193, 7, 0.9);
+  --sm-green: #198754;
+  --sm-green-100: rgba(25, 135, 84, 0.1);
+  --sm-green-200: rgba(25, 135, 84, 0.2);
+  --sm-green-300: rgba(25, 135, 84, 0.3);
+  --sm-green-400: rgba(25, 135, 84, 0.4);
+  --sm-green-500: rgba(25, 135, 84, 0.5);
+  --sm-green-600: rgba(25, 135, 84, 0.6);
+  --sm-green-700: rgba(25, 135, 84, 0.7);
+  --sm-green-800: rgba(25, 135, 84, 0.8);
+  --sm-green-900: rgba(25, 135, 84, 0.9);
+  --sm-teal: #20c997;
+  --sm-teal-100: rgba(32, 201, 151, 0.1);
+  --sm-teal-200: rgba(32, 201, 151, 0.2);
+  --sm-teal-300: rgba(32, 201, 151, 0.3);
+  --sm-teal-400: rgba(32, 201, 151, 0.4);
+  --sm-teal-500: rgba(32, 201, 151, 0.5);
+  --sm-teal-600: rgba(32, 201, 151, 0.6);
+  --sm-teal-700: rgba(32, 201, 151, 0.7);
+  --sm-teal-800: rgba(32, 201, 151, 0.8);
+  --sm-teal-900: rgba(32, 201, 151, 0.9);
+  --sm-cyan: #0dcaf0;
+  --sm-cyan-100: rgba(13, 202, 240, 0.1);
+  --sm-cyan-200: rgba(13, 202, 240, 0.2);
+  --sm-cyan-300: rgba(13, 202, 240, 0.3);
+  --sm-cyan-400: rgba(13, 202, 240, 0.4);
+  --sm-cyan-500: rgba(13, 202, 240, 0.5);
+  --sm-cyan-600: rgba(13, 202, 240, 0.6);
+  --sm-cyan-700: rgba(13, 202, 240, 0.7);
+  --sm-cyan-800: rgba(13, 202, 240, 0.8);
+  --sm-cyan-900: rgba(13, 202, 240, 0.9);
+}

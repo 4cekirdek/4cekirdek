@@ -1,0 +1,35 @@
+@use "../variables/table" as *;
+@use "../variables/sizings" as *;
+@use "../helpers/generete-classes" as *;
+
+@layer table {
+  /* Border Collapse */
+  @include generate-classes((), "border", $border-collapse);
+
+  /* Border Spacing */
+  @include generate-classes(
+    ($border-spacing-name-x, $border-spacing-name-y),
+    "border-spacing",
+    $spacer-widths
+  );
+
+  /* Border Spacing X */
+  @include generate-classes(
+    $border-spacing-name-x,
+    "border-spacing-x",
+    $spacer-widths
+  );
+
+  /* Border Spacing Y */
+  @include generate-classes(
+    $border-spacing-name-y,
+    "border-spacing-y",
+    $spacer-widths
+  );
+
+  /* Table Layouts */
+  @include generate-classes(table-layout, "table", $table-layouts);
+
+  /* Caption Side */
+  @include generate-classes(caption-side, "caption", $caption-sides);
+}
