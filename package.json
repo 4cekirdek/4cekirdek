@@ -14,12 +14,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/4cekirdek/css-library.git"
+    "url": "https://github.com/4cekirdek/4cekirdek.git"
   },
   "bugs": {
-    "url": "https://github.com/4cekirdek/css-library/issues"
+    "url": "https://github.com/4cekirdek/4cekirdek"
   },
-  "homepage": "https://github.com/4cekirdek/css-library#readme",
+  "homepage": "https://github.com/4cekirdek/4cekirdek",
   "scripts": {
     "build": "node build.js"
   },
