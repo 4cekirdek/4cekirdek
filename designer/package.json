@@ -17,9 +17,9 @@
     "url": "https://github.com/4cekirdek/4cekirdek.git"
   },
   "bugs": {
-    "url": "https://github.com/4cekirdek/4cekirdek"
+    "url": "https://github.com/4cekirdek/4cekirdek/tree/main/src/designer"
   },
-  "homepage": "https://github.com/4cekirdek/4cekirdek",
+  "homepage": "https://github.com/4cekirdek/4cekirdek/tree/main/src/designer",
   "scripts": {
     "build": "node build.js"
   },
