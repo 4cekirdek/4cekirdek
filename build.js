@@ -1,62 +1,62 @@
 const sass = require("sass");
 const fs = require("fs");
 const path = require("path");
+const csso = require("csso");
 
-const inputIndexFile = path.join(__dirname, "src/index.scss");
-const inputFonts = path.join(__dirname, "src/styles/_fonts.scss");
-const inputTypography = path.join(__dirname, "src/styles/_typography.scss");
-const inputUi = path.join(__dirname, "src/styles/_ui.scss");
-const inputBorder = path.join(__dirname, "src/styles/_border.scss");
-const inputSpacing = path.join(__dirname, "src/styles/_spacing.scss");
-const inputSizing = path.join(__dirname, "src/styles/_sizing.scss");
-const inputGridSystem = path.join(__dirname, "src/styles/_grid-system.scss");
-const inputEffect = path.join(__dirname, "src/styles/_effect.scss");
-const inputTable = path.join(__dirname, "src/styles/_table.scss");
-const inputTransition = path.join(__dirname, "src/styles/_transition.scss");
+// SCSS giriş dosyaları
+const inputFiles = {
+  index: path.join(__dirname, "src/index.scss"),
+  fonts: path.join(__dirname, "src/styles/_fonts.scss"),
+  typography: path.join(__dirname, "src/styles/_typography.scss"),
+  ui: path.join(__dirname, "src/styles/_ui.scss"),
+  border: path.join(__dirname, "src/styles/_border.scss"),
+  spacing: path.join(__dirname, "src/styles/_spacing.scss"),
+  sizing: path.join(__dirname, "src/styles/_sizing.scss"),
+  gridSystem: path.join(__dirname, "src/styles/_grid-system.scss"),
+  effect: path.join(__dirname, "src/styles/_effect.scss"),
+  table: path.join(__dirname, "src/styles/_table.scss"),
+  transition: path.join(__dirname, "src/styles/_transition.scss"),
+};
 
-const outputIndexFile = path.join(__dirname, "dist/index.css");
-const outputFonts = path.join(__dirname, "dist/fonts.css");
-const outputTypography = path.join(__dirname, "dist/typography.css");
-const outputUi = path.join(__dirname, "dist/ui.css");
-const outputBorder = path.join(__dirname, "dist/border.css");
-const outputSpacing = path.join(__dirname, "dist/spacing.css");
-const outputSizing = path.join(__dirname, "dist/sizing.css");
-const outputGridSystem = path.join(__dirname, "dist/grid-system.css");
-const outputEffect = path.join(__dirname, "dist/effect.css");
-const outputTable = path.join(__dirname, "dist/table.css");
-const outputTransition = path.join(__dirname, "dist/transition.css");
+// CSS çıkış dosyaları
+const outputFiles = {
+  index: path.join(__dirname, "dist/index.css"),
+  fonts: path.join(__dirname, "dist/fonts.css"),
+  typography: path.join(__dirname, "dist/typography.css"),
+  ui: path.join(__dirname, "dist/ui.css"),
+  border: path.join(__dirname, "dist/border.css"),
+  spacing: path.join(__dirname, "dist/spacing.css"),
+  sizing: path.join(__dirname, "dist/sizing.css"),
+  gridSystem: path.join(__dirname, "dist/grid-system.css"),
+  effect: path.join(__dirname, "dist/effect.css"),
+  table: path.join(__dirname, "dist/table.css"),
+  transition: path.join(__dirname, "dist/transition.css"),
+};
 
-function compileScss() {
+// SCSS derleme ve minify etme fonksiyonu
+function compileAndMinifyScss(inputPath, outputPath) {
   try {
-    const resultIndexFile = sass.compile(inputIndexFile);
-    const resultFonts = sass.compile(inputFonts);
-    const resultTypography = sass.compile(inputTypography);
-    const resultUi = sass.compile(inputUi);
-    const resultBorder = sass.compile(inputBorder);
-    const resultSpacing = sass.compile(inputSpacing);
-    const resultSizing = sass.compile(inputSizing);
-    const resultGridSystem = sass.compile(inputGridSystem);
-    const resultEffect = sass.compile(inputEffect);
-    const resultTable = sass.compile(inputTable);
-    const resultTransition = sass.compile(inputTransition);
+    // SCSS derle
+    const result = sass.compile(inputPath);
 
-    fs.writeFileSync(outputIndexFile, resultIndexFile.css);
-    fs.writeFileSync(outputFonts, resultFonts.css);
-    fs.writeFileSync(outputTypography, resultTypography.css);
-    fs.writeFileSync(outputUi, resultUi.css);
-    fs.writeFileSync(outputBorder, resultBorder.css);
-    fs.writeFileSync(outputSpacing, resultSpacing.css);
-    fs.writeFileSync(outputSizing, resultSizing.css);
-    fs.writeFileSync(outputGridSystem, resultGridSystem.css);
-    fs.writeFileSync(outputEffect, resultEffect.css);
-    fs.writeFileSync(outputTable, resultTable.css);
-    fs.writeFileSync(outputTransition, resultTransition.css);
+    // Minify işlemi
+    const minified = csso.minify(result.css).css;
 
-    console.log(`SCSS başarıyla ${outputIndexFile} dosyasına dönüştürüldü!`);
+    // Minify edilmiş CSS'i yaz
+    fs.writeFileSync(outputPath, minified);
+    console.log(`Başarıyla minify edildi: ${outputPath}`);
   } catch (err) {
-    console.error("Hata oluştu:", err.message);
+    console.error(`Hata oluştu (${inputPath}):`, err.message);
   }
 }
 
-// Derleme işlemini başlat
-compileScss();
+// Tüm dosyaları işleme al
+function processFiles() {
+  for (const [key, inputPath] of Object.entries(inputFiles)) {
+    const outputPath = outputFiles[key];
+    compileAndMinifyScss(inputPath, outputPath);
+  }
+}
+
+// İşlemi başlat
+processFiles();

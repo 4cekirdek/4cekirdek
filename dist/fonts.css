@@ -1,5 +1,1 @@
-@namespace svg url(http://www.w3.org/2000/svg);
-@font-face {
-  font-family: "Open Sans";
-  src: url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
-}
+@namespace svg url(http://www.w3.org/2000/svg);@font-face{font-family:"Open Sans";src:url(https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap)}

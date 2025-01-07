@@ -1,10 +1,31 @@
 {
+  "name": "@4cekirdek",
+  "version": "1.0.0",
+  "description": "A CSS utility library designed for modern design systems.",
+  "main": "dist/index.css",
+  "author": "Samet Çetin",
+  "license": "MIT",
+  "keywords": [
+    "CSS",
+    "utility",
+    "design-system",
+    "responsive",
+    "4cekirdek"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/4cekirdek/css-library.git"
+  },
+  "bugs": {
+    "url": "https://github.com/4cekirdek/css-library/issues"
+  },
+  "homepage": "https://github.com/4cekirdek/css-library#readme",
   "scripts": {
     "build": "node build.js"
   },
-  "dependencies": {
-    "fs": "^0.0.1-security",
-    "path": "^0.12.7",
-    "sass": "^1.83.0"
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.83.0",
+    "csso": "^5.0.5"
   }
 }
