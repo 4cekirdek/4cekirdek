@@ -2,8 +2,6 @@
 @use "default" as *;
 @use "colors" as *;
 
-$delay: 0.2s !default;
-
 $opacities: (
   0: 0,
   5: 0.05,

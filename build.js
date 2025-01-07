@@ -12,6 +12,7 @@ const inputSizing = path.join(__dirname, "src/styles/_sizing.scss");
 const inputGridSystem = path.join(__dirname, "src/styles/_grid-system.scss");
 const inputEffect = path.join(__dirname, "src/styles/_effect.scss");
 const inputTable = path.join(__dirname, "src/styles/_table.scss");
+const inputTransition = path.join(__dirname, "src/styles/_transition.scss");
 
 const outputIndexFile = path.join(__dirname, "dist/index.css");
 const outputFonts = path.join(__dirname, "dist/fonts.css");
@@ -23,6 +24,7 @@ const outputSizing = path.join(__dirname, "dist/sizing.css");
 const outputGridSystem = path.join(__dirname, "dist/grid-system.css");
 const outputEffect = path.join(__dirname, "dist/effect.css");
 const outputTable = path.join(__dirname, "dist/table.css");
+const outputTransition = path.join(__dirname, "dist/transition.css");
 
 function compileScss() {
   try {
@@ -36,6 +38,7 @@ function compileScss() {
     const resultGridSystem = sass.compile(inputGridSystem);
     const resultEffect = sass.compile(inputEffect);
     const resultTable = sass.compile(inputTable);
+    const resultTransition = sass.compile(inputTransition);
 
     fs.writeFileSync(outputIndexFile, resultIndexFile.css);
     fs.writeFileSync(outputFonts, resultFonts.css);
@@ -47,6 +50,7 @@ function compileScss() {
     fs.writeFileSync(outputGridSystem, resultGridSystem.css);
     fs.writeFileSync(outputEffect, resultEffect.css);
     fs.writeFileSync(outputTable, resultTable.css);
+    fs.writeFileSync(outputTransition, resultTransition.css);
 
     console.log(`SCSS başarıyla ${outputIndexFile} dosyasına dönüştürüldü!`);
   } catch (err) {

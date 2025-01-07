@@ -1,5 +1,6 @@
 @use "sass:map"; // SCSS'in map (harita) fonksiyonlarını kullanmak için.
 @use "sass:meta"; // SCSS meta verileri işlemek için.
+@use "../variables/default" as *;
 @use "../variables/grid-system" as *; // Grid sistem değişkenlerini import eder.
 @use "../functions/mixins" as *; // Mixins fonksiyonlarını import eder.
 
@@ -68,7 +69,10 @@
   // Sınıf için prefix.
   $spacer-map,
   // Spacer değerleri ve isimlerini içeren harita.
-  $filter-breakpoints: null // Hangi breakpoints'in dahil edileceğini filtreler.
+  $filter-breakpoints: null,
+  // Hangi breakpoints'in dahil edileceğini filtreler.
+  // Aksiyonlar render edilecek mi onu berlileyen degisken
+  $is-actions: null //
 ) {
   // 1. Varsayılan sınıfları oluştur.
   @each $spacer, $spacer-value in $spacer-map {
@@ -83,6 +87,28 @@
         $value: if($spacer-value, $spacer-value, $spacer);
         @each $property, $value in generate-spacing($properties, $value) {
           #{$property}: #{$value}; // Normal değer için.
+        }
+      }
+    }
+  }
+
+  // 2. Aksona gore sınıflar oluştur.
+  @if (meta.type-of($is-actions) != "null") {
+    @each $spacer, $spacer-value in $spacer-map {
+      @each $action in $actions {
+        .#{$action}\:#{create-class-name($prefix, $spacer)}:#{$action} {
+          // Sınıf ismi oluşturulur.
+          @if meta.type-of($spacer-value) == "map" {
+            // Değer bir harita ise.
+            @each $property, $value in $spacer-value {
+              #{$property}: #{$value}; // Haritadaki her özellik eklenir.
+            }
+          } @else {
+            $value: if($spacer-value, $spacer-value, $spacer);
+            @each $property, $value in generate-spacing($properties, $value) {
+              #{$property}: #{$value}; // Normal değer için.
+            }
+          }
         }
       }
     }

@@ -1,0 +1,18 @@
+@use "sass:map";
+
+@function generate-durations($times, $prefix) {
+  $result: (); // Boş bir harita oluştur
+
+  @each $key, $value in $times {
+    $result: map.merge(
+      $result,
+      (
+        $key: (
+          $prefix: $value,
+        ),
+      )
+    );
+  }
+
+  @return $result;
+}
