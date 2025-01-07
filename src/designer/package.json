@@ -2,7 +2,7 @@
   "name": "@4cekirdek/designer",
   "version": "1.0.0",
   "description": "A CSS utility library designed for modern design systems.",
-  "main": "dist/index.css",
+  "main": "index.css",
   "author": "Samet Çetin",
   "license": "MIT",
   "keywords": [
