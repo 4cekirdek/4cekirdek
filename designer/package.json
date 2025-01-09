@@ -2,7 +2,7 @@
   "name": "@4cekirdek/designer",
   "version": "1.0.0",
   "description": "A CSS utility library designed for modern design systems.",
-  "main": "index.css",
+  "main": "index.js",
   "author": "Samet Çetin",
   "license": "MIT",
   "keywords": [
@@ -17,15 +17,19 @@
     "url": "https://github.com/4cekirdek/4cekirdek.git"
   },
   "bugs": {
-    "url": "https://github.com/4cekirdek/4cekirdek/tree/main/src/designer"
+    "url": "https://github.com/4cekirdek/4cekirdek/tree/main/designer"
   },
-  "homepage": "https://github.com/4cekirdek/4cekirdek/tree/main/src/designer",
+  "homepage": "https://github.com/4cekirdek/4cekirdek/tree/main/designer",
   "scripts": {
-    "build": "node build.js"
+    "tsc": "tsc",
+    "build": "tsc && node index.js"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "@types/csso": "^5.0.4",
+    "@types/node": "^22.10.5",
+    "csso": "^5.0.5",
     "sass": "^1.83.0",
-    "csso": "^5.0.5"
+    "typescript": "^5.7.2"
   }
 }

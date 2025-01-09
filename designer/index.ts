@@ -1,7 +1,7 @@
-const sass = require("sass");
-const fs = require("fs");
-const path = require("path");
-const csso = require("csso");
+import sass from "sass";
+import fs from "fs";
+import path from "path";
+import csso from "csso";
 
 // Kullanıcı yapılandırmasını işlemek için fonksiyon
 function processConfig() {
@@ -44,9 +44,11 @@ function processConfig() {
   return scssVariables;
 }
 
-// SCSS giriş ve CSS çıkış dosyaları
+// SCSS giriş dosyaları
 const inputFile = path.join(__dirname, "src/index.scss");
-const outputFile = path.join(__dirname, "dist/index.css");
+
+// CSS çıkış dosyaları
+const outputFile = path.join(__dirname, "index.css");
 
 // SCSS derleme ve minify etme fonksiyonu
 function compileAndMinifyScss() {
@@ -54,14 +56,8 @@ function compileAndMinifyScss() {
     // Kullanıcı yapılandırmasını SCSS değişkenlerine çevir
     const userVariables = processConfig();
 
-    // SCSS dosyasını oku ve kullanıcı değişkenlerini ekle
-    const scssContent = `${userVariables}\n${fs.readFileSync(
-      inputFile,
-      "utf8"
-    )}`;
-
-    // SCSS'i derle
-    const result = sass.compileString(scssContent);
+    // SCSS derle
+    const result = sass.compile(inputFile);
 
     // CSS'i minify et
     const minified = csso.minify(result.css).css;
@@ -69,8 +65,8 @@ function compileAndMinifyScss() {
     // Minify edilmiş CSS'i çıkış dosyasına yaz
     fs.writeFileSync(outputFile, minified);
     console.log(`Başarıyla derlendi ve minify edildi: ${outputFile}`);
-  } catch (err) {
-    console.error(`Hata oluştu (${inputFile}):`, err.message);
+  } catch (err: any) {
+    console.error(`Hata oluştu (${inputFile}):`, err?.message);
   }
 }
 
