@@ -118,7 +118,7 @@
   @each $breakpoint, $breakpoint-value in $breakpoints {
     @if $filter-breakpoints == null or index($filter-breakpoints, $breakpoint) {
       // Eğer filtre verilmişse sadece belirtilen breakpoints'i oluştur.
-      @include mediaMin($breakpoint) {
+      @include mediaMax($breakpoint) {
         // Breakpoint için medya sorgusu.
         @each $spacer, $spacer-value in $spacer-map {
           .#{$breakpoint}\:#{create-class-name($prefix, $spacer)} {
@@ -174,7 +174,7 @@
         "map" and
         map.has-key($breakpoints, $breakpoint)
       {
-        @include mediaMin($breakpoint) {
+        @include mediaMax($breakpoint) {
           .#{$class-name} {
             @each $property, $value in $breakpoint-styles {
               #{$property}: #{$value};
