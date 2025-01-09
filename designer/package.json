@@ -1,6 +1,6 @@
 {
   "name": "@4cekirdek/designer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A CSS utility library designed for modern design systems.",
   "main": "index.js",
   "author": "Samet Çetin",
