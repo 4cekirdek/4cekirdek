@@ -1,24 +1,22 @@
 @use "../variables/sizings" as *;
 @use "../helpers/generete-classes" as *;
 
-@layer spacing {
-  /* Margin */
-  @include generate-classes(margin, "m", $spacer-widths);
-  @include generate-classes(margin-top, "mt", $spacer-widths);
-  @include generate-classes(margin-bottom, "mb", $spacer-widths);
-  @include generate-classes(margin-right, "mr", $spacer-widths);
-  @include generate-classes(margin-left, "mt", $spacer-widths);
+/* Margin */
+@include generate-classes(margin, "m", $spacer-widths);
+@include generate-classes(margin-top, "mt", $spacer-widths);
+@include generate-classes(margin-bottom, "mb", $spacer-widths);
+@include generate-classes(margin-right, "mr", $spacer-widths);
+@include generate-classes(margin-left, "ml", $spacer-widths);
 
-  @include generate-classes(margin-left margin-right, "mx", $spacer-widths);
-  @include generate-classes(margin-top margin-bottom, "my", $spacer-widths);
+@include generate-classes(margin-left margin-right, "mx", $spacer-widths);
+@include generate-classes(margin-top margin-bottom, "my", $spacer-widths);
 
-  /* Padding */
-  @include generate-classes(padding, "p", $spacer-widths);
-  @include generate-classes(padding-top, "pt", $spacer-widths);
-  @include generate-classes(padding-bottom, "pb", $spacer-widths);
-  @include generate-classes(padding-right, "pr", $spacer-widths);
-  @include generate-classes(padding-left, "pt", $spacer-widths);
+/* Padding */
+@include generate-classes(padding, "p", $spacer-widths);
+@include generate-classes(padding-top, "pt", $spacer-widths);
+@include generate-classes(padding-bottom, "pb", $spacer-widths);
+@include generate-classes(padding-right, "pr", $spacer-widths);
+@include generate-classes(padding-left, "pl", $spacer-widths);
 
-  @include generate-classes(padding-left padding-right, "px", $spacer-widths);
-  @include generate-classes(padding-top padding-bottom, "py", $spacer-widths);
-}
+@include generate-classes(padding-left padding-right, "px", $spacer-widths);
+@include generate-classes(padding-top padding-bottom, "py", $spacer-widths);

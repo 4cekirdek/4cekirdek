@@ -3,43 +3,33 @@
 @use "../variables/border" as *;
 @use "../helpers/generete-classes" as *;
 
-@layer borders {
-  /* Border Width */
-  @include generate-classes(border-width, "b", $spacers);
-  @include generate-classes(border-top-width, "bt", $spacers);
-  @include generate-classes(border-bottom-width, "bb", $spacers);
-  @include generate-classes(border-right-width, "br", $spacers);
-  @include generate-classes(border-left-width, "bt", $spacers);
+/* Border Width */
+@include generate-classes(border-width, "b", $spacers);
+@include generate-classes(border-top-width, "bt", $spacers);
+@include generate-classes(border-bottom-width, "bb", $spacers);
+@include generate-classes(border-right-width, "br", $spacers);
+@include generate-classes(border-left-width, "bl", $spacers);
 
-  @include generate-classes(
-    border-left-width border-right-width,
-    "bx",
-    $spacers
-  );
-  @include generate-classes(
-    border-top-width border-bottom-width,
-    "by",
-    $spacers
-  );
+@include generate-classes(border-left-width border-right-width, "bx", $spacers);
+@include generate-classes(border-top-width border-bottom-width, "by", $spacers);
 
-  /* Border Radius */
-  @include generate-classes(border-radius, "radius", $spacers);
+/* Border Radius */
+@include generate-classes(border-radius, "radius", $spacers);
 
-  /* Border Color */
-  @include generate-classes(border-color, "b", $colors);
+/* Border Color */
+@include generate-classes(border-color, "b", $colors);
 
-  /* Border Style */
-  @include generate-classes(border-style, "b", $border-styles);
+/* Border Style */
+@include generate-classes(border-style, "b", $border-styles);
 
-  /* Outline Color */
-  @include generate-classes(outline-color, "outline", $colors);
+/* Outline Color */
+@include generate-classes(outline-color, "outline", $colors);
 
-  /* Outline Style */
-  @include generate-classes(outline-style, "outline", $outline-styles);
+/* Outline Style */
+@include generate-classes(outline-style, "outline", $outline-styles);
 
-  /* Outline Width */
-  @include generate-classes(outline-width, "outline", $spacers);
+/* Outline Width */
+@include generate-classes(outline-width, "outline", $spacers);
 
-  /* Outline Offset */
-  @include generate-classes(outline-offset, "outline-offset", $spacers);
-}
+/* Outline Offset */
+@include generate-classes(outline-offset, "outline-offset", $spacers);
